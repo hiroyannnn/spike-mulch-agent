@@ -33,5 +33,5 @@ export async function runAgent(
   });
 
   // Convert OpenAI stream into a Web ReadableStream.
-  return stream.toReadableStream();
+  return (stream as any).toReadableStream();
 }
