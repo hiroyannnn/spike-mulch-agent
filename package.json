@@ -1,0 +1,23 @@
+{
+  "name": "multi-agent-chat",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "echo \"No tests specified\""
+  },
+  "dependencies": {
+    "next": "14.2.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "openai": "^5.0.0",
+    "assistant-ui": "^0.8.0",
+    "@assistant-ui/react-ui": "^0.8.0",
+    "tailwindcss": "^3.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}
