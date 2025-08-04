@@ -12,7 +12,8 @@ export const agents = {
 
 export type AgentName = keyof typeof agents;
 
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+// Allow building without an API key by falling back to an empty string.
+const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || "" });
 
 export interface Message {
   role: "user" | "assistant";
@@ -33,5 +34,5 @@ export async function runAgent(
   });
 
   // Convert OpenAI stream into a Web ReadableStream.
-  return stream.toReadableStream();
+  return (stream as any).toReadableStream();
 }
