@@ -14,7 +14,8 @@ interface Session {
 
 const sessions = new Map<string, Session>();
 
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+// Use an empty string so the build does not fail if no API key is configured.
+const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || "" });
 
 // Decide agent via lightweight LLM classification.
 export async function decideAgent(message: string): Promise<AgentName> {

@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { ReactNode } from "react";
+import AssistantProvider from "./AssistantProvider";
 
 export const metadata: Metadata = {
   title: "Multi-Agent Chatbot",
@@ -10,7 +11,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <AssistantProvider>{children}</AssistantProvider>
+      </body>
     </html>
   );
 }
