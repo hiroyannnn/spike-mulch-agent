@@ -21,6 +21,9 @@
     "@types/node": "^24.2.0",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.4.0"
   }
 }
