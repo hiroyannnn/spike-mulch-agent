@@ -13,6 +13,10 @@ This project is a minimal Next.js 14 application demonstrating a multi-agent cha
 - Create a production build with `{YOUR_PM} run build`.
 - Start the built app with `{YOUR_PM} start`.
 
+## Test
+
+- Run tests with `{YOUR_PM} test`.
+
 ## Deploy
 
 Deploy to your preferred platform (e.g. Vercel, Cloudflare). Ensure the `OPENAI_API_KEY` environment variable is configured in the hosting environment.
