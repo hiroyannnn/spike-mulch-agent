@@ -33,6 +33,13 @@ export async function runAgent(
     ],
   });
 
-  // Convert OpenAI stream into a Web ReadableStream.
-  return (stream as any).toReadableStream();
+  // `client.responses.stream` returns different types depending on the
+  // runtime and library version. In Node/Edge it may already be a
+  // `ReadableStream`, while older versions expose a helper method
+  // `toReadableStream()`. Guard against both cases to avoid runtime
+  // errors when the helper does not exist.
+  const anyStream = stream as any;
+  return typeof anyStream.toReadableStream === "function"
+    ? anyStream.toReadableStream()
+    : (anyStream as ReadableStream);
 }
