@@ -39,7 +39,17 @@ export async function runAgent(
   // `toReadableStream()`. Guard against both cases to avoid runtime
   // errors when the helper does not exist.
   const anyStream = stream as any;
-  return typeof anyStream.toReadableStream === "function"
-    ? anyStream.toReadableStream()
-    : (anyStream as ReadableStream);
+  if (typeof anyStream.toReadableStream === "function") {
+    return anyStream.toReadableStream();
+  }
+
+  // When running in a Node.js environment the OpenAI library may return a
+  // Node.js `Readable` stream. Convert it to a Web `ReadableStream` so that
+  // it can be consumed by the `Response` constructor used in the API route.
+  if (typeof anyStream.pipe === "function") {
+    const { Readable } = await import("stream");
+    return Readable.toWeb(anyStream);
+  }
+
+  return anyStream as ReadableStream;
 }
